@@ -1,26 +1,77 @@
-import React from "react";
-import logo from "../Assets/Airbnb-logo.png";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import internet from "../Assets/internet.png";
+import data from "../data/Home.json"
 function Header() {
+  const [show,setShow]=useState(false);
+
   return (
+    
     <div className="navbar">
       <div className="navOne">
         <div className="logo">
-          <img src={logo} height=" 60px" width="100px"></img>
+   {
+    data.map((header)=>{
+      return(
+        header.navbar.map((img)=>{
+            return(
+              <img src={require(`../Assets/${img.logo}`)} height="60px" width="180px"></img>
+            )
+        })
+      )
+     
+    })
+   }
         </div>
 
-        <div className="center_nav">
-          <div>
-            <NavLink className="nav_links">Stays</NavLink>
-          </div>
-          <div>
-            <NavLink className="nav_links">Experiences</NavLink>
-          </div>
-          <div>
-            <NavLink className="nav_links">Online Experiences</NavLink>
-          </div>
+        {!show &&(
+                      
+                      
+      <div className="nav">
+        <div className="navsection">
+          <div className="navitems">
+            <ul>
+              <li onClick={()=>setShow(true)}>Any where</li>
+            </ul>
+            </div>
+            <div className="navitems">
+            <ul>
+              <li onClick={()=>setShow(true)}>Any week</li>
+            </ul>
+            </div>
+            <div className="navitems">
+            <ul>
+              <li>Any Guests</li>
+            </ul>
+            </div>
+            <div className="iconSearch navitems">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+            </div>
         </div>
+        </div>
+  
+      )}
+          {
+            show &&(
+              <div className="center_nav">
+
+                <div>
+                <NavLink className="nav_links" onClick={()=>setShow(true)} >Stays</NavLink>
+              </div>
+              <div>
+                <NavLink className="nav_links" onClick={()=>setShow(true)}>Experiences</NavLink>
+              </div>
+              <div>
+                <NavLink className="nav_links">Online Experiences</NavLink>
+              </div>
+              </div>
+
+              )
+            
+            
+          }
+          
         <div className="nav-end">
           <div className="navEndItems">
             <div className="profSection1">
@@ -51,7 +102,8 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className="navTwo">
+      {show &&(
+        <div className="navTwo">
         <div className="navCol">
           <div className="col col1">
             <ul>
@@ -71,7 +123,7 @@ function Header() {
               <input type="text" placeholder="Add dates" className="inputCont"></input>
             </ul>
           </div>
-          <div className="col col4">
+          <div className=" col4A col4">
             <div>
               <ul>
                 <li>Who</li>
@@ -86,7 +138,10 @@ function Header() {
           </div>
         </div>
       </div>
-    </div>
+  
+      )}
+  
+        </div>
   );
 }
 

@@ -1,0 +1,36 @@
+[
+    {
+    "navbar":[
+        {"logo":"Logo.png"}
+    ],
+    "center_nav":[
+        {
+"option1":"Stays",
+ "details":[
+{"id":"1","name":"CheckIn"},
+{"id":"2","name":"checkDates"}
+ ]
+},
+{"option2":"Experiences",
+"details":[
+    {"id":"1","name":"CheckIn"}
+     ]
+},
+{
+    "option3":"Online Experiences"
+
+}
+
+       
+       
+    ],
+    "navEnd":[
+{
+    "name":"Airbnb your Home",
+    "internet":"internet.png",
+    "profile":"",
+    "hamburger":""
+}
+    ]
+    }
+]

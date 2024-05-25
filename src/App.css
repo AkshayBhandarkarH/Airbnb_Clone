@@ -35,7 +35,34 @@ body {
   display: flex;
   gap: 1rem;
 }
+.nav{
+}
+.navsection{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 2rem;
+  height: 60px;
+ 
+}
+.navitems{
+  margin-top: 1rem;
+ padding:0.5rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.iconSearch{
+  margin: 0.5rem;
+  padding:0.5rem;
+  color: white;
+  background: red;
+  border-radius: 50%;
+}
 
+/* #2Nav */
 .navCol {
   display: flex;
 
