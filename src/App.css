@@ -1,6 +1,9 @@
 body {
   margin: 0;
 }
+.home{
+
+}
 /* Navbar */
 .navbar {
   height: 160px;
@@ -25,6 +28,7 @@ body {
 .navEndItems {
   display: flex;
   gap: 2rem;
+  
 }
 
 .nav_links {
@@ -34,6 +38,9 @@ body {
 .profSection {
   display: flex;
   gap: 1rem;
+  border: 1px solid grey;
+  padding: 4px;
+  border-radius: 10px;
 }
 .nav{
 }
@@ -109,4 +116,43 @@ li {
   background: red;
   padding: 1rem;
   border-radius: 50%;
+}
+.addGuests{
+  display: block;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  height: 300px;
+  width:350px;
+  border-radius: 10px;
+  top: 21vh;
+  right: 22vw;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.Guest{
+  display: flex;
+  margin:0.5rem;
+  padding: 1rem;
+  width:300px;
+  height: 60px;
+  
+}
+
+.icon-shape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.icon-sm {
+  width: 2rem;
+  height: 2rem;
+  
+}
+.restrictions{
+  font-size: 10px;
+
 }

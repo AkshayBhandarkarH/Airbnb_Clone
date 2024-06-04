@@ -3,7 +3,12 @@ import { NavLink } from "react-router-dom";
 import data from "../data/Home.json"
 function Header() {
   const [show,setShow]=useState(false);
-
+  const [guest,setGuest]=useState(false);
+  const [value,setValue]=useState([]);
+  
+  function handleGuest(){
+    setGuest(!false)
+  }
   return (
     
     <div className="navbar">
@@ -40,7 +45,7 @@ function Header() {
             </div>
             <div className="navitems">
             <ul>
-              <li>Any Guests</li>
+              <li onClick={()=>setShow(true)}>Any Guests</li>
             </ul>
             </div>
             <div className="iconSearch navitems">
@@ -102,7 +107,11 @@ function Header() {
           </div>
         </div>
       </div>
-      {show &&(
+      
+  {
+  guest ? 
+  <div>
+    {show &&(
         <div className="navTwo">
         <div className="navCol">
           <div className="col col1">
@@ -123,11 +132,13 @@ function Header() {
               <input type="text" placeholder="Add dates" className="inputCont"></input>
             </ul>
           </div>
+          
+          
           <div className=" col4A col4">
             <div>
               <ul>
                 <li>Who</li>
-                <button>Add Guests</button>
+                <button className="btn btn-light p-1" onClick={()=>setGuest(false)}>Add Guests</button>
               </ul>
             </div>
             <div className="search_icon">
@@ -136,11 +147,121 @@ function Header() {
               </svg>
             </div>
           </div>
+        
+
         </div>
       </div>
   
       )}
+    <div className="addGuests">
+      <div className="Guest">
+      <div className="title">
+        Adults
+        <p className="restrictions">Age 13 or above</p>
+        </div>
+        <div className="guestNos">
+        <div class="input-group w-auto justify-content-end align-items-center">
+         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
+         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+         </div>
+        
+          </div>
+      </div>
+      <div className="Guest">
+      <div className="title">
+        Childrens
+        <p className="restrictions">Age 2 -12</p>
+
+        </div>
+        <div className="guestNos">
+        <div class="input-group w-auto justify-content-end align-items-center">
+         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
+         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+         </div>
+          </div>
+      </div>
+      <div className="Guest">
+      <div className="title">
+        infants
+        <p className="restrictions">Under 2</p>
+
+        </div>
+        <div className="guestNos">
+        <div class="input-group w-auto justify-content-end align-items-center">
+         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
+         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+         </div>
+        
+          </div>
+      </div>
+      <div className="Guest">
+      <div className="title">
+      Pets
+      <p className="restrictions">Bringing a service animal?</p>
+
+        </div>
+        <div className="guestNos">
+        <div class="input-group w-auto justify-content-end align-items-center">
+         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
+         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+         </div>
+        
+          </div>
+      </div>
+      </div>
+  </div>
+
+  :
+    <div>
+{show &&(
+        <div className="navTwo">
+        <div className="navCol">
+          <div className="col col1">
+            <ul>
+              <li>Where</li>
+              <input type="text" placeholder="Search destinations" className="inputCont"></input>
+            </ul>
+          </div>
+          <div className=" col col2">
+            <ul>
+              <li>Check in</li>
+              <input type="text" placeholder="Add dates" className="inputCont"></input>
+            </ul>
+          </div>
+          <div className="col col3">
+            <ul>
+              <li>Check Out</li>
+              <input type="text" placeholder="Add dates" className="inputCont"></input>
+            </ul>
+          </div>
+          
+          
+          <div className=" col4A col4">
+            <div>
+              <ul>
+                <li>Who</li>
+                <button className="btn btn-light p-1" onClick={handleGuest}>Add Guests</button>
+              </ul>
+            </div>
+            <div className="search_icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+            </div>
+          </div>
+        
+
+        </div>
+      </div>
   
+      )}
+    </div>
+  
+}
         </div>
   );
 }
