@@ -1,10 +1,10 @@
 import React from "react";
 
 
-function Product (){
+function Categories (){
     return(
         <div>
-            Products
+          Categories
         </div>
     )
 
@@ -12,4 +12,4 @@ function Product (){
 
 
 
-export default Product;
+export default Categories;

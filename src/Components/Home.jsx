@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import Products from "./Products";
+import Categories from "./Categories";
 function Home() {
   return (
     <div className="home">
       <Header />
-      <hr/>
-      <Products/>
+   
+      <Categories/>
     </div>
   );
 }

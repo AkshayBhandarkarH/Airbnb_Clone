@@ -4,11 +4,46 @@ import data from "../data/Home.json"
 function Header() {
   const [show,setShow]=useState(false);
   const [guest,setGuest]=useState(false);
-  const [value,setValue]=useState([]);
-  
+  const [adultsCount, setAdultsCount] = useState(0);
+  const [childrenCount, setChildrenCount] = useState(0);
+  const [infantCount,  setInfantsCount] = useState(0);
+  const [petsCount, setPetsCount] = useState(0);
   function handleGuest(){
     setGuest(!false)
+    setAdultsCount(0);
+    setChildrenCount(0);
   }
+
+
+  // Function to handle increment button click
+  const handleIncrement = (type) => {
+      if (type === 'adults') {
+          setAdultsCount(prevCount => prevCount + 1);
+      } else if (type === 'children') {
+          setChildrenCount(prevCount => prevCount + 1);
+      }
+      else if (type === 'infants') {
+        setInfantsCount(prevCount => prevCount + 1);
+    }
+    else if (type === 'pets') {
+      setPetsCount(prevCount => prevCount + 1);
+  }
+  };
+
+  // Function to handle decrement button click
+  const handleDecrement = (type) => {
+      if (type === 'adults' && adultsCount > 0) {
+          setAdultsCount(prevCount => prevCount - 1);
+      } else if (type === 'children' && childrenCount > 0) {
+          setChildrenCount(prevCount => prevCount - 1);
+      }
+      else if (type === 'infants') {
+        setInfantsCount(prevCount => prevCount - 1);
+    }
+    else if (type === 'pets') {
+      setPetsCount(prevCount => prevCount - 1);
+  }
+  };
   return (
     
     <div className="navbar">
@@ -161,9 +196,9 @@ function Header() {
         </div>
         <div className="guestNos">
         <div class="input-group w-auto justify-content-end align-items-center">
-         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
-         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+         <input  type="button" value="-"onClick={()=>handleDecrement('adults')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
+         <input type="number"  value={adultsCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+"  onClick={()=>handleIncrement('adults')} class="button-plus border rounded-circle icon-shape icon-sm "/>
          </div>
         
           </div>
@@ -176,23 +211,24 @@ function Header() {
         </div>
         <div className="guestNos">
         <div class="input-group w-auto justify-content-end align-items-center">
-         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
-         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+        <input  type="button" value="-" onClick={()=>handleDecrement('children')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
+         <input type="number" value={childrenCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" onClick={()=>handleIncrement('children')} class="button-plus border rounded-circle icon-shape icon-sm "/>
          </div>
           </div>
       </div>
       <div className="Guest">
       <div className="title">
-        infants
+        Infants
         <p className="restrictions">Under 2</p>
 
         </div>
         <div className="guestNos">
         <div class="input-group w-auto justify-content-end align-items-center">
-         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
-         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+        <input  type="button" value="-" onClick={()=>handleDecrement('infants')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
+         <input type="number" value={infantCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" onClick={()=>handleIncrement('infants')} class="button-plus border rounded-circle icon-shape icon-sm "/>
+
          </div>
         
           </div>
@@ -205,9 +241,9 @@ function Header() {
         </div>
         <div className="guestNos">
         <div class="input-group w-auto justify-content-end align-items-center">
-         <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity"/>
-         <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity"/>
+        <input  type="button" value="-" onClick={()=>handleDecrement('pets')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
+         <input type="number" value={petsCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
+         <input type="button" value="+" onClick={()=>handleIncrement('pets')} class="button-plus border rounded-circle icon-shape icon-sm "/>
          </div>
         
           </div>
