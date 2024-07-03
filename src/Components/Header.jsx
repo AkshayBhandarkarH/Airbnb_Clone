@@ -54,7 +54,10 @@ function Header() {
       return(
         header.navbar.map((img)=>{
             return(
-              <img src={require(`../Assets/${img.logo}`)} height="60px" width="180px" onClick={()=>setShow(false)}></img>
+              <img src={require(`../Assets/${img.logo}`)} height="60px" width="180px"  onClick={() => {
+                setShow(false);
+                setGuest(false);
+              }}></img>
             )
         })
       )
