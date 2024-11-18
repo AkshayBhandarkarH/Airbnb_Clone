@@ -1,12 +1,11 @@
 body {
   margin: 0;
 }
-.home{
-
+.home {
 }
 /* Navbar */
 .navbar {
-  height: 160px;
+  height: 20vh;
   text-decoration: none;
   padding: auto;
 }
@@ -28,7 +27,6 @@ body {
 .navEndItems {
   display: flex;
   gap: 2rem;
-  
 }
 
 .nav_links {
@@ -42,28 +40,26 @@ body {
   padding: 4px;
   border-radius: 10px;
 }
-.nav{
+.nav {
 }
-.navsection{
-  
+.navsection {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
   border-radius: 2rem;
   height: 60px;
- 
 }
-.navitems{
+.navitems {
   margin-top: 1rem;
- padding:0.5rem;
- display: flex;
- justify-content: center;
- align-items: center;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.iconSearch{
+.iconSearch {
   margin: 0.5rem;
-  padding:0.5rem;
+  padding: 0.5rem;
   color: white;
   background: red;
   border-radius: 50%;
@@ -117,26 +113,25 @@ li {
   padding: 1rem;
   border-radius: 50%;
 }
-.addGuests{
+.addGuests {
   display: block;
   position: absolute;
   z-index: 1;
   background-color: white;
   height: 300px;
-  width:350px;
+  width: 350px;
   border-radius: 10px;
   top: 21vh;
   right: 22vw;
   border: 1px solid black;
   border-radius: 5px;
 }
-.Guest{
+.Guest {
   display: flex;
-  margin:0.5rem;
+  margin: 0.5rem;
   padding: 1rem;
-  width:300px;
+  width: 300px;
   height: 60px;
-  
 }
 
 .icon-shape {
@@ -150,9 +145,28 @@ li {
 .icon-sm {
   width: 2rem;
   height: 2rem;
-  
 }
-.restrictions{
+.restrictions {
   font-size: 10px;
+}
 
+.contentBox {
+  border-radius: 20px;
+}
+.Places {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.placeImg {
+  border-radius: 20px;
+}
+
+.placeDetails {
+  display: block;
+  margin-left: 0;
+}
+
+li {
+  font-size: 1rem;
 }

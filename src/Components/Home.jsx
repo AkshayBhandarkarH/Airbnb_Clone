@@ -5,8 +5,8 @@ function Home() {
   return (
     <div className="home">
       <Header />
-   
-      <Categories/>
+      <hr />
+      <Categories />
     </div>
   );
 }

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "Icon",
+    "city": "Pune",
+    "name": "Train for Gladiator Glory",
+    "view": "place1.jpg",
+    "price": "",
+    "duration": "Coming 27 November"
+  },
+  {
+    "id": "Icon",
+    "city": "Pune",
+    "name": "Haunt the Beetlejuice house",
+    "view": "place2.jpg",
+    "price": "",
+    "duration": "Dec 11-16"
+  },
+  {
+    "id": "Icon",
+    "city": "Pune",
+    "name": "Stay in Prince's Purple Rain house",
+    "view": "place3.jpg",
+    "price": "",
+    "duration": "Sold Out"
+  },
+  {
+    "id": "Farms",
+    "city": "Bengaluru Urban",
+    "name": "Bengaluru Urban",
+    "view": "BengaluruUrban.jpg",
+    "price": "",
+    "duration": "Coming 27 November"
+  },
+  {
+    "id": "Farms",
+    "city": "Coimbatore",
+    "name": "Haunt the Beetlejuice house",
+    "view": "Coimbatore.jpg",
+    "price": "",
+    "duration": "Sold Out"
+  },
+  {
+    "id": "Farms",
+    "city": "Kottathara",
+    "name": "Stay in Prince's Purple Rain house",
+    "view": "Kottathara.jpg",
+    "price": "",
+    "duration": "Sold Out"
+  },
+  {
+    "id": "Farms",
+    "city": "Karnataka,India",
+    "name": "Stay in Prince's Purple Rain house",
+    "view": "karnataka.jpg",
+    "price": "",
+    "duration": "Sold Out"
+  }
+]

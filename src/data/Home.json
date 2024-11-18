@@ -1,36 +1,22 @@
 [
-    {
-    "navbar":[
-        {"logo":"Logo.png"}
-    ],
-    "center_nav":[
+  {
+    "home": {
+      "logo": [{ "img": "Logo.png" }],
+      "categories": [
         {
-"option1":"Stays",
- "details":[
-{"id":"1","name":"CheckIn"},
-{"id":"2","name":"checkDates"}
- ]
-},
-{"option2":"Experiences",
-"details":[
-    {"id":"1","name":"CheckIn"}
-     ]
-},
-{
-    "option3":"Online Experiences"
-
-}
-
-       
-       
-    ],
-    "navEnd":[
-{
-    "name":"Airbnb your Home",
-    "internet":"internet.png",
-    "profile":"",
-    "hamburger":""
-}
-    ]
+          "name": "Icon",
+          "icon": "icon.jpg"
+        },
+        { "name": "Farms", "icon": "farms.jpg" },
+        { "name": "Lake Front", "icon": "lakeFront.jpg" },
+        { "name": "Pools", "icon": "Pools.jpg" },
+        { "name": "Rooms", "icon": "rooms.jpg" },
+        { "name": "Top World", "icon": "topWorld.jpg" },
+        { "name": "Tree Houses", "icon": "treehouses.jpg" },
+        { "name": "Trending", "icon": "trending.jpg" },
+        { "name": "Tropical", "icon": "tropical.jpg" },
+        { "name": "Views", "icon": "views.jpg" }
+      ]
     }
+  }
 ]

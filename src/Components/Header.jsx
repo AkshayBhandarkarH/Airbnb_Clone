@@ -1,120 +1,113 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import data from "../data/Home.json"
+import data from "../data/Home.json";
+import { useNavigate } from "react-router-dom";
+import Home from "../Components/Home";
 function Header() {
-  const [show,setShow]=useState(false);
-  const [guest,setGuest]=useState(false);
+  const [show, setShow] = useState(false);
+  const [guest, setGuest] = useState(false);
   const [adultsCount, setAdultsCount] = useState(0);
   const [childrenCount, setChildrenCount] = useState(0);
-  const [infantCount,  setInfantsCount] = useState(0);
+  const [infantCount, setInfantsCount] = useState(0);
   const [petsCount, setPetsCount] = useState(0);
-  function handleGuest(){
-    setGuest(!false)
+  const navigate = useNavigate();
+
+  function handleGuest() {
+    setGuest(!false);
     setAdultsCount(0);
     setChildrenCount(0);
   }
 
-
   // Function to handle increment button click
   const handleIncrement = (type) => {
-      if (type === 'adults') {
-          setAdultsCount(prevCount => prevCount + 1);
-      } else if (type === 'children') {
-          setChildrenCount(prevCount => prevCount + 1);
-      }
-      else if (type === 'infants') {
-        setInfantsCount(prevCount => prevCount + 1);
+    if (type === "adults") {
+      setAdultsCount((prevCount) => prevCount + 1);
+    } else if (type === "children") {
+      setChildrenCount((prevCount) => prevCount + 1);
+    } else if (type === "infants") {
+      setInfantsCount((prevCount) => prevCount + 1);
+    } else if (type === "pets") {
+      setPetsCount((prevCount) => prevCount + 1);
     }
-    else if (type === 'pets') {
-      setPetsCount(prevCount => prevCount + 1);
-  }
   };
 
   // Function to handle decrement button click
   const handleDecrement = (type) => {
-      if (type === 'adults' && adultsCount > 0) {
-          setAdultsCount(prevCount => prevCount - 1);
-      } else if (type === 'children' && childrenCount > 0) {
-          setChildrenCount(prevCount => prevCount - 1);
-      }
-      else if (type === 'infants') {
-        setInfantsCount(prevCount => prevCount - 1);
+    if (type === "adults" && adultsCount > 0) {
+      setAdultsCount((prevCount) => prevCount - 1);
+    } else if (type === "children" && childrenCount > 0) {
+      setChildrenCount((prevCount) => prevCount - 1);
+    } else if (type === "infants") {
+      setInfantsCount((prevCount) => prevCount - 1);
+    } else if (type === "pets") {
+      setPetsCount((prevCount) => prevCount - 1);
     }
-    else if (type === 'pets') {
-      setPetsCount(prevCount => prevCount - 1);
-  }
   };
+  console.log(data);
   return (
-    
     <div className="navbar">
       <div className="navOne">
         <div className="logo">
-   {
-    data.map((header)=>{
-      return(
-        header.navbar.map((img)=>{
-            return(
-              <img src={require(`../Assets/${img.logo}`)} height="60px" width="180px"  onClick={() => {
-                setShow(false);
-                setGuest(false);
-              }}></img>
-            )
-        })
-      )
-     
-    })
-   }
+          {data.map((details, index) => (
+            <div key={index}>
+              {details.home.logo.map((logoItem, logoIndex) => (
+                <img
+                  key={logoIndex}
+                  src={require(`../Assets/${logoItem.img}`)}
+                  alt="Logo"
+                  height="60px"
+                  width="180px"
+                  onClick={() => navigate("/Home")}
+                />
+              ))}
+            </div>
+          ))}
         </div>
 
-        {!show &&(
-                      
-                      
-      <div className="nav">
-        <div className="navsection">
-          <div className="navitems">
-            <ul>
-              <li onClick={()=>setShow(true)}>Any where</li>
-            </ul>
+        {!show && (
+          <div className="nav">
+            <div className="navsection">
+              <div className="navitems">
+                <ul>
+                  <li onClick={() => setShow(true)}>Any where</li>
+                </ul>
+              </div>
+              <div className="navitems">
+                <ul>
+                  <li onClick={() => setShow(true)}>Any week</li>
+                </ul>
+              </div>
+              <div className="navitems">
+                <ul>
+                  <li onClick={() => setShow(true)}>Any Guests</li>
+                </ul>
+              </div>
+              <div className="iconSearch navitems">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </div>
             </div>
-            <div className="navitems">
-            <ul>
-              <li onClick={()=>setShow(true)}>Any week</li>
-            </ul>
+          </div>
+        )}
+        {show && (
+          <div className="center_nav">
+            <div>
+              <NavLink className="nav_links" onClick={() => setShow(true)}>
+                Stays
+              </NavLink>
             </div>
-            <div className="navitems">
-            <ul>
-              <li onClick={()=>setShow(true)}>Any Guests</li>
-            </ul>
+            <div>
+              <NavLink className="nav_links" onClick={() => setShow(true)}>
+                Experiences
+              </NavLink>
             </div>
-            <div className="iconSearch navitems">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
+            <div>
+              <NavLink className="nav_links">Online Experiences</NavLink>
             </div>
-        </div>
-        </div>
-  
-      )}
-          {
-            show &&(
-              <div className="center_nav">
+          </div>
+        )}
 
-                <div>
-                <NavLink className="nav_links" onClick={()=>setShow(true)} >Stays</NavLink>
-              </div>
-              <div>
-                <NavLink className="nav_links" onClick={()=>setShow(true)}>Experiences</NavLink>
-              </div>
-              <div>
-                <NavLink className="nav_links">Online Experiences</NavLink>
-              </div>
-              </div>
-
-              )
-            
-            
-          }
-          
         <div className="nav-end">
           <div className="navEndItems">
             <div className="profSection1">
@@ -145,163 +138,189 @@ function Header() {
           </div>
         </div>
       </div>
-      
-  {
-  guest ? 
-  <div>
-    {show &&(
-        <div className="navTwo">
-        <div className="navCol">
-          <div className="col col1">
-            <ul>
-              <li>Where</li>
-              <input type="text" placeholder="Search destinations" className="inputCont"></input>
-            </ul>
-          </div>
-          <div className=" col col2">
-            <ul>
-              <li>Check in</li>
-              <input type="text" placeholder="Add dates" className="inputCont"></input>
-            </ul>
-          </div>
-          <div className="col col3">
-            <ul>
-              <li>Check Out</li>
-              <input type="text" placeholder="Add dates" className="inputCont"></input>
-            </ul>
-          </div>
-          
-          
-          <div className=" col4A col4">
-            <div>
-              <ul>
-                <li>Who</li>
-                <button className="btn btn-light p-1" onClick={()=>setGuest(false)}>Add Guests</button>
-              </ul>
+
+      {guest ? (
+        <div>
+          {show && (
+            <div className="navTwo">
+              <div className="navCol">
+                <div className="col col1">
+                  <ul>
+                    <li>Where</li>
+                    <input type="text" placeholder="Search destinations" className="inputCont"></input>
+                  </ul>
+                </div>
+                <div className=" col col2">
+                  <ul>
+                    <li>Check in</li>
+                    <input type="text" placeholder="Add dates" className="inputCont"></input>
+                  </ul>
+                </div>
+                <div className="col col3">
+                  <ul>
+                    <li>Check Out</li>
+                    <input type="text" placeholder="Add dates" className="inputCont"></input>
+                  </ul>
+                </div>
+
+                <div className=" col4A col4">
+                  <div>
+                    <ul>
+                      <li>Who</li>
+                      <button className="btn btn-light p-1" onClick={() => setGuest(false)}>
+                        Add Guests
+                      </button>
+                    </ul>
+                  </div>
+                  <div className="search_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="search_icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16" >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
+          )}
+          <div className="addGuests">
+            <div className="Guest">
+              <div className="title">
+                Adults
+                <p className="restrictions">Age 13 or above</p>
+              </div>
+              <div className="guestNos">
+                <div class="input-group w-auto justify-content-end align-items-center">
+                  <input
+                    type="button"
+                    value="-"
+                    onClick={() => handleDecrement("adults")}
+                    class="button-minus border rounded-circle  icon-shape icon-sm mx-1 "
+                  />
+                  <input type="number" value={adultsCount} name="quantity" class="quantity-field border-0 text-center w-25" />
+                  <input
+                    type="button"
+                    value="+"
+                    onClick={() => handleIncrement("adults")}
+                    class="button-plus border rounded-circle icon-shape icon-sm "
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        
-
-        </div>
-      </div>
-  
-      )}
-    <div className="addGuests">
-      <div className="Guest">
-      <div className="title">
-        Adults
-        <p className="restrictions">Age 13 or above</p>
-        </div>
-        <div className="guestNos">
-        <div class="input-group w-auto justify-content-end align-items-center">
-         <input  type="button" value="-"onClick={()=>handleDecrement('adults')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
-         <input type="number"  value={adultsCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+"  onClick={()=>handleIncrement('adults')} class="button-plus border rounded-circle icon-shape icon-sm "/>
-         </div>
-        
-          </div>
-      </div>
-      <div className="Guest">
-      <div className="title">
-        Childrens
-        <p className="restrictions">Age 2 -12</p>
-
-        </div>
-        <div className="guestNos">
-        <div class="input-group w-auto justify-content-end align-items-center">
-        <input  type="button" value="-" onClick={()=>handleDecrement('children')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
-         <input type="number" value={childrenCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" onClick={()=>handleIncrement('children')} class="button-plus border rounded-circle icon-shape icon-sm "/>
-         </div>
-          </div>
-      </div>
-      <div className="Guest">
-      <div className="title">
-        Infants
-        <p className="restrictions">Under 2</p>
-
-        </div>
-        <div className="guestNos">
-        <div class="input-group w-auto justify-content-end align-items-center">
-        <input  type="button" value="-" onClick={()=>handleDecrement('infants')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
-         <input type="number" value={infantCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" onClick={()=>handleIncrement('infants')} class="button-plus border rounded-circle icon-shape icon-sm "/>
-
-         </div>
-        
-          </div>
-      </div>
-      <div className="Guest">
-      <div className="title">
-      Pets
-      <p className="restrictions">Bringing a service animal?</p>
-
-        </div>
-        <div className="guestNos">
-        <div class="input-group w-auto justify-content-end align-items-center">
-        <input  type="button" value="-" onClick={()=>handleDecrement('pets')} class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " />
-         <input type="number" value={petsCount} name="quantity" class="quantity-field border-0 text-center w-25"/>
-         <input type="button" value="+" onClick={()=>handleIncrement('pets')} class="button-plus border rounded-circle icon-shape icon-sm "/>
-         </div>
-        
-          </div>
-      </div>
-      </div>
-  </div>
-
-  :
-    <div>
-{show &&(
-        <div className="navTwo">
-        <div className="navCol">
-          <div className="col col1">
-            <ul>
-              <li>Where</li>
-              <input type="text" placeholder="Search destinations" className="inputCont"></input>
-            </ul>
-          </div>
-          <div className=" col col2">
-            <ul>
-              <li>Check in</li>
-              <input type="text" placeholder="Add dates" className="inputCont"></input>
-            </ul>
-          </div>
-          <div className="col col3">
-            <ul>
-              <li>Check Out</li>
-              <input type="text" placeholder="Add dates" className="inputCont"></input>
-            </ul>
-          </div>
-          
-          
-          <div className=" col4A col4">
-            <div>
-              <ul>
-                <li>Who</li>
-                <button className="btn btn-light p-1" onClick={handleGuest}>Add Guests</button>
-              </ul>
+            <div className="Guest">
+              <div className="title">
+                Childrens
+                <p className="restrictions">Age 2 -12</p>
+              </div>
+              <div className="guestNos">
+                <div class="input-group w-auto justify-content-end align-items-center">
+                  <input
+                    type="button"
+                    value="-"
+                    onClick={() => handleDecrement("children")}
+                    class="button-minus border rounded-circle  icon-shape icon-sm mx-1 "
+                  />
+                  <input type="number" value={childrenCount} name="quantity" class="quantity-field border-0 text-center w-25" />
+                  <input
+                    type="button"
+                    value="+"
+                    onClick={() => handleIncrement("children")}
+                    class="button-plus border rounded-circle icon-shape icon-sm "
+                  />
+                </div>
+              </div>
             </div>
-            <div className="search_icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-              </svg>
+            <div className="Guest">
+              <div className="title">
+                Infants
+                <p className="restrictions">Under 2</p>
+              </div>
+              <div className="guestNos">
+                <div class="input-group w-auto justify-content-end align-items-center">
+                  <input
+                    type="button"
+                    value="-"
+                    onClick={() => handleDecrement("infants")}
+                    class="button-minus border rounded-circle  icon-shape icon-sm mx-1 "
+                  />
+                  <input type="number" value={infantCount} name="quantity" class="quantity-field border-0 text-center w-25" />
+                  <input
+                    type="button"
+                    value="+"
+                    onClick={() => handleIncrement("infants")}
+                    class="button-plus border rounded-circle icon-shape icon-sm "
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="Guest">
+              <div className="title">
+                Pets
+                <p className="restrictions">Bringing a service animal?</p>
+              </div>
+              <div className="guestNos">
+                <div class="input-group w-auto justify-content-end align-items-center">
+                  <input
+                    type="button"
+                    value="-"
+                    onClick={() => handleDecrement("pets")}
+                    class="button-minus border rounded-circle  icon-shape icon-sm mx-1 "
+                  />
+                  <input type="number" value={petsCount} name="quantity" class="quantity-field border-0 text-center w-25" />
+                  <input
+                    type="button"
+                    value="+"
+                    onClick={() => handleIncrement("pets")}
+                    class="button-plus border rounded-circle icon-shape icon-sm "
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        
-
         </div>
-      </div>
-  
+      ) : (
+        <div>
+          {show && (
+            <div className="navTwo">
+              <div className="navCol">
+                <div className="col col1">
+                  <ul>
+                    <li>Where</li>
+                    <input type="text" placeholder="Search destinations" className="inputCont"></input>
+                  </ul>
+                </div>
+                <div className=" col col2">
+                  <ul>
+                    <li>Check in</li>
+                    <input type="text" placeholder="Add dates" className="inputCont"></input>
+                  </ul>
+                </div>
+                <div className="col col3">
+                  <ul>
+                    <li>Check Out</li>
+                    <input type="text" placeholder="Add dates" className="inputCont"></input>
+                  </ul>
+                </div>
+
+                <div className=" col4A col4">
+                  <div>
+                    <ul>
+                      <li>Who</li>
+                      <button className="btn btn-light p-1" onClick={handleGuest}>
+                        Add Guests
+                      </button>
+                    </ul>
+                  </div>
+                  <div className="search_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
-  
-}
-        </div>
   );
 }
 
