@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import data from "../data/Home.json";
 import placeData from "../data/places.json";
 import "react-datepicker/dist/react-datepicker.css";
-import SignUp from "./register";
+import Register from "./register";
 import Login from "./login";
 function Header() {
   const [show, setShow] = useState(false);
@@ -67,6 +67,10 @@ function Header() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closeProfile = () => {
+    setProfile(false);
   };
 
   return (
@@ -161,7 +165,7 @@ function Header() {
                   <div className="d-flex flex-column align-items-start">
                     <ul className="list-unstyled m-2">
                       <li>
-                        <button type="button" className="btn border-0" onClick={() => handleNavigation("sign-up")}>
+                        <button type="button" className="btn border-0" onClick={() => handleNavigation("register")}>
                           Sign up
                         </button>
                       </li>
@@ -188,7 +192,10 @@ function Header() {
         </div>
         <hr />
 
-        {isModalOpen && <Login onClose={closeModal} onreload={reload} content={modalContent} className="z-3" />}
+        {isModalOpen && modalContent === "register" && <Register onClose={closeModal} onreload={reload} content={modalContent} className="z-3" />}
+        {isModalOpen && modalContent === "login" && (
+          <Login onClose={closeModal} onCloseProfile={closeProfile} onreload={reload} content={modalContent} className="z-3" />
+        )}
 
         {guest ? (
           <div>
@@ -201,6 +208,7 @@ function Header() {
                       <input type="text" placeholder="Search destinations" className="inputCont"></input>
                     </ul>
                   </div>
+                  closeProfile
                   <div className=" col col2">
                     <ul>
                       <li>Check in</li>
@@ -213,7 +221,6 @@ function Header() {
                       <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                     </ul>
                   </div>
-
                   <div className=" col4 col4">
                     <div>
                       <ul>
