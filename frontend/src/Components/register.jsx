@@ -1,4 +1,3 @@
-// Modal.js
 import { React, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -46,7 +45,7 @@ const Register = ({ onClose, onreload }) => {
 
         <Modal.Body>
           <div className="container p-4">
-            <form onSubmit={handleSubmit} className="w-50 mx-auto p-4 border rounded shadow-sm bg-light">
+            <form onSubmit={handleSubmit} className="w-70 mx-auto p-4 border rounded shadow-sm bg-light">
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">
                   Username
